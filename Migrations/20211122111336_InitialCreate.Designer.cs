@@ -12,8 +12,8 @@ using movie.Data;
 namespace movie.Migrations
 {
     [DbContext(typeof(MoviesDbContext))]
-    [Migration("20211121162443_create")]
-    partial class create
+    [Migration("20211122111336_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,6 +88,25 @@ namespace movie.Migrations
                         .IsUnique();
 
                     b.ToTable("Genres");
+                });
+
+            modelBuilder.Entity("movie.Entities.Image", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("Data")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("movie.Entities.Movie", b =>

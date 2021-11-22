@@ -86,4 +86,23 @@ public class MovieController : ControllerBase
         var result = JsonSerializer.Serialize(await _movieService.UpdateAsync(movie), options);
         return Ok(result);
     }
+
+    // [HttpPost]
+    // public async Task<IActionResult> Create([FromBody]ImageReview pvm)
+    // {
+    //     var binaryReader = new BinaryReader(pvm.Data.OpenReadStream());
+    //     var imageData = binaryReader.ReadBytes((int)pvm.Data.Length);
+    //     var entity = pvm.ToEntity(imageData);
+
+    //     entity.Data = imageData;
+
+    //     var result = await _movieService.CreateAsync(entity);
+
+    //     if (result.IsSuccess)
+    //     {
+    //         return Ok(result.Image);
+    //     }
+    //     return BadRequest();
+    // }
+
 }

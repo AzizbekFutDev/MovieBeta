@@ -17,4 +17,9 @@ public static class ModelEntityMappers
             realiseDate: movie.RealiseDate,
             actors: actors.ToList(),
             genres: genres.ToList());
+
+    public static Image ToEntity(this ImageReview image, byte[] imageData)
+        => new Image(
+                title: image.Title,
+                data: imageData);
 }

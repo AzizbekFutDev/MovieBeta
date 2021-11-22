@@ -88,6 +88,25 @@ namespace movie.Migrations
                     b.ToTable("Genres");
                 });
 
+            modelBuilder.Entity("movie.Entities.Image", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("Data")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("movie.Entities.Movie", b =>
                 {
                     b.Property<Guid>("Id")

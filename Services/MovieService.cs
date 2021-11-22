@@ -26,6 +26,23 @@ public class MovieService : IMovieService
         }
     }
 
+    public async Task<(bool IsSuccess, Exception Exception, Image Image)> CreateAsync(Image image)
+    {
+        try
+        {
+            await _context.Images.AddAsync(image);
+            await _context.SaveChangesAsync();
+
+            _logger.LogInformation($"Movie created with image in DB. ID: {image.Id}");
+            return (true, null, image);
+        }
+        catch (Exception e)
+        {
+            _logger.LogInformation($"Creating Movie with image in DB failed.");
+            return (false, e, null);
+        }
+    }
+
     public async Task<(bool IsSuccess, Exception Exception)> DeleteAsync(Guid id)
     {
         var movie = await GetAsync(id);

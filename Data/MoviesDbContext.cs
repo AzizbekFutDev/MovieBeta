@@ -7,7 +7,7 @@ public class MoviesDbContext : DbContext
 
     public DbSet<Genre> Genres { get; set; }
 
-    public DbSet<EnFormFile> Files { get; set; }
+    public DbSet<Image> Images { get; set; }
 
     public MoviesDbContext(DbContextOptions options)
         : base(options) { }
